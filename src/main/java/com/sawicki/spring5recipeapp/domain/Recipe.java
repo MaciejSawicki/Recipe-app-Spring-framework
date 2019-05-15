@@ -16,9 +16,11 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
+
+    @Lob
     private Byte[] image;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
     public Long getId() {
