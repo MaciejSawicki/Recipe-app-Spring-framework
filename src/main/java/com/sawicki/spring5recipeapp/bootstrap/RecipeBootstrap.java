@@ -106,12 +106,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         pierogiNotes.setRecipeNotes("The key to homemade pierogi is to be sure to seal it shut so that none of the stuffing comes out during cooking. Don’t let any of the filling get in between the dough edges or you won’t be able to get a good seal. Pinch the dough shut with your fingers and then press with the tongs of a fork to further seal and give a decorative edge.");
 
         pierogiRecipe.setNotes(pierogiNotes);
-        pierogiNotes.setRecipe(pierogiRecipe);
 
-        pierogiRecipe.getIngredients().add(new Ingredient("all-purpose flour plus more for dusting", new BigDecimal(3), cupUom,pierogiRecipe));
-        pierogiRecipe.getIngredients().add(new Ingredient("large eggs", new BigDecimal(3), eachUom,pierogiRecipe));
-        pierogiRecipe.getIngredients().add(new Ingredient("sour cream", new BigDecimal(2), tableSpoonUom,pierogiRecipe));
-        pierogiRecipe.getIngredients().add(new Ingredient("water", new BigDecimal(0.75), cupUom,pierogiRecipe));
+        pierogiRecipe.addIngredient(new Ingredient("all-purpose flour plus more for dusting", new BigDecimal(3), cupUom));
+        pierogiRecipe.addIngredient(new Ingredient("large eggs", new BigDecimal(3), eachUom));
+        pierogiRecipe.addIngredient(new Ingredient("sour cream", new BigDecimal(2), tableSpoonUom));
+        pierogiRecipe.addIngredient(new Ingredient("water", new BigDecimal(0.75), cupUom));
 
         pierogiRecipe.getCategories().add(polishCategory);
 
@@ -131,15 +130,14 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         burgerNotes.setRecipeNotes("Roy Choi’s burgers look like the American classic, but get an Asian twist with toasted sesame seeds in the mayo and fresh shiso leaves on top of the lettuce.");
 
         burgerRecipe.setNotes(burgerNotes);
-        burgerNotes.setRecipe(burgerRecipe);
 
-        burgerRecipe.getIngredients().add(new Ingredient("mayonnaise", new BigDecimal(0.3), cupUom, burgerRecipe));
-        burgerRecipe.getIngredients().add(new Ingredient("toasted sesame seeds", new BigDecimal(1), tableSpoonUom, burgerRecipe));
-        burgerRecipe.getIngredients().add(new Ingredient("unsalted butter, at room temperature", new BigDecimal(4), tableSpoonUom, burgerRecipe));
-        burgerRecipe.getIngredients().add(new Ingredient("hamburger buns", new BigDecimal(4), eachUom, burgerRecipe));
-        burgerRecipe.getIngredients().add(new Ingredient("ground chuck", new BigDecimal(2), dashUom, burgerRecipe));
-        burgerRecipe.getIngredients().add(new Ingredient("olive oil", new BigDecimal(2), tableSpoonUom, burgerRecipe));
-        burgerRecipe.getIngredients().add(new Ingredient("tomato", new BigDecimal(1), eachUom, burgerRecipe));
+        burgerRecipe.addIngredient(new Ingredient("mayonnaise", new BigDecimal(0.3), cupUom));
+        burgerRecipe.addIngredient(new Ingredient("toasted sesame seeds", new BigDecimal(1), tableSpoonUom));
+        burgerRecipe.addIngredient(new Ingredient("unsalted butter, at room temperature", new BigDecimal(4), tableSpoonUom));
+        burgerRecipe.addIngredient(new Ingredient("hamburger buns", new BigDecimal(4), eachUom));
+        burgerRecipe.addIngredient(new Ingredient("ground chuck", new BigDecimal(2), dashUom));
+        burgerRecipe.addIngredient(new Ingredient("olive oil", new BigDecimal(2), tableSpoonUom));
+        burgerRecipe.addIngredient(new Ingredient("tomato", new BigDecimal(1), eachUom));
 
         burgerRecipe.getCategories().add(americanCategory);
 
