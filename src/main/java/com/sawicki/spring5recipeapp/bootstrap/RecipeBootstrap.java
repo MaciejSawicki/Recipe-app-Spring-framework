@@ -120,6 +120,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         pierogiRecipe.getCategories().add(polishCategory);
 
+        pierogiRecipe.setUrl("www.pierogi.pl/z_farszem");
+        pierogiRecipe.setServings(4);
+        pierogiRecipe.setSource("Polish Grandma Kitchen");
+
         recipes.add(pierogiRecipe);
 
         Recipe burgerRecipe = new Recipe();
