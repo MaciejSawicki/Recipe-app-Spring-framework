@@ -1,6 +1,8 @@
 package com.sawicki.spring5recipeapp.controllers;
 
 import com.sawicki.spring5recipeapp.commands.IngredientCommand;
+import com.sawicki.spring5recipeapp.commands.RecipeCommand;
+import com.sawicki.spring5recipeapp.commands.UnitOfMeasureCommand;
 import com.sawicki.spring5recipeapp.services.IngredientService;
 import com.sawicki.spring5recipeapp.services.RecipeService;
 import com.sawicki.spring5recipeapp.services.UnitOfMeasureService;
@@ -45,6 +47,23 @@ public class IngredientController {
     }
 
     @GetMapping
+    @RequestMapping("/recipe/{recipeId}/ingredient/new")
+    public String newRecipe(@PathVariable String recipeId, Model model){
+
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+
+        ingredientCommand.setUnitOfMeasure(new UnitOfMeasureCommand());
+
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
+    }
+
+    @GetMapping
     @RequestMapping("/recipe/{recipeId}/ingredient/{id}/update")
     public String updateRecipeIngredient(@PathVariable String recipeId,
                                        @PathVariable String id,
@@ -63,5 +82,14 @@ public class IngredientController {
         log.debug("saved ingredient id:" + savedCommand.getId());
 
         return "redirect:/recipe/" + savedCommand.getRecipeId() + "/ingredient/" + savedCommand.getId() + "/show";
+    }
+
+    @RequestMapping("recipe/{recipeId}/ingredient/{id}/delete")
+    public String deleteIngredient(@PathVariable String recipeId, @PathVariable String id) {
+
+        log.debug("Deleting ingredient with id: " + id);
+        ingredientService.deleteById(Long.valueOf(recipeId), Long.valueOf(id));
+
+        return "redirect:/recipe/" + recipeId + "/ingredients" ;
     }
 }
