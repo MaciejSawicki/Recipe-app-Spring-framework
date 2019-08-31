@@ -34,6 +34,7 @@
                                     <th>ID</th>
                                     <th>Description</th>
                                     <th>Recipe page</th>
+                                    <th>Update</th>
                                     <th>Delete Recipe</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,7 @@
                                 <td th:text="${recipe.id}">...</td>
                                 <td th:text="${recipe.description}">...</td>
                                 <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View Recipe</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a></td>
                                 <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/delete'}">Delete</a></td>
                             </tr>
                         </table>
